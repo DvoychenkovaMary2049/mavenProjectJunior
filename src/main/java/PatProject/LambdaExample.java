@@ -2,10 +2,7 @@ package PatProject;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -23,6 +20,7 @@ public class LambdaExample {
             if (predicito.test(person)) cosumerito.accept(person);
         }
     }
+
 
     public static void main(String[] args) {
         PersonService personService = new PersonService();
@@ -65,7 +63,6 @@ public class LambdaExample {
                 return -1;
             });
 
-
 //            filtering(arrayList, person -> LocalDate.now().getYear() - person.getBod().getYear() < 40);
 
             arrayList.removeIf(person -> person.getCountry().equals("Iran"));
@@ -85,6 +82,8 @@ public class LambdaExample {
     }
 }
 
+
+
 interface Predicito<T> {
 
     boolean test(T t);
@@ -92,6 +91,20 @@ interface Predicito<T> {
 }
 
 interface Cosumerito <T>{
-    void accepr (T t);
+    void accept (T t);
 
 }
+//public class TestPersonService {
+//    public static <T>HashMap<Boolean,? extends List<T>> partitioningBy(List <T> list, Predicito <T> predicito){
+//        HashMap<Boolean, ArrayList<T>> hashMap = new HashMap<>();
+//        ArrayList<T> listTrue = new ArrayList<>();
+//        ArrayList<T> listFalse = new ArrayList<>();
+//        for (T t: list){
+//            boolean b = (predicito.test(t)) ? listTrue.add(t) : listFalse.add(t);
+//        }
+//        hashMap.put(true, listTrue);
+//        hashMap.put(false, listFalse);
+//        return hashMap;
+//    }
+//}
+//
